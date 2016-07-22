@@ -1,7 +1,12 @@
 import React from 'react'
 import {render} from 'react-dom'
+import {Provider} from 'react-redux'
+
+import store from './store'
 
 render(
-    (<div>It works!</div>),
+    (<Provider store={store}>
+        <div>It works!</div>
+    </Provider>),
     document.getElementById('content')
 );
