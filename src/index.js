@@ -3,10 +3,11 @@ import {render} from 'react-dom'
 import {Provider} from 'react-redux'
 
 import store from './store'
+import page from './page'
 
 render(
     (<Provider store={store}>
-        <div>It works!</div>
+        <page.Container/>
     </Provider>),
     document.getElementById('content')
 );
