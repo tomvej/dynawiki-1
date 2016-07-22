@@ -2,7 +2,6 @@
   "name": "dynawiki",
   "version": "0.0.1",
   "description": "Dynamic personal wiki",
-  "main": "index.js",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server -d --inline --hot"
   },
