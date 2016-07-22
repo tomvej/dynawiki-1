@@ -1,7 +1,6 @@
-import {Map} from 'immutable'
-
 import {NAME} from './constants'
+import initial from './initial'
 
-const reducer = (state = Map({}), action) => state;
+const reducer = (state = initial, action) => state;
 
 export default {NAME, reducer};
