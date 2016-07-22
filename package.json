@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server -d --inline --hot",
-    "test": "./node_modules/.bin/mocha --compilers js:babel-register --recursive --reporter spec --watch"
   },
   "repository": {
     "type": "git",
