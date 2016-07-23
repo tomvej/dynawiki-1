@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {getChildren, getHeading} from './selectors'
+import {getSection} from './selectors'
 import Node from './Node'
 
 const Section = ({header, children}) => (
@@ -12,8 +12,8 @@ const Section = ({header, children}) => (
 );
 
 const mapStateToProps = (state, {id}) => ({
-    header: getHeading(state, id),
-    children: getChildren(state, id)
+    header: getSection(state, id).heading,
+    children: getSection(state, id).children
 });
 
 export default connect(mapStateToProps)(Section);
