@@ -6,20 +6,31 @@ import {hidePopup} from './actions'
 import {getKey} from './selectors'
 import popups from '../popups'
 
+const prevent = event => {
+    event.preventDefault();
+};
+
 class Popup extends React.Component {
 
-    componentDidMount() {
-        window.addEventListener('mousedown', this.outsideClick.bind(this));
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('mousedown', this.outsideClick.bind(this));
+    constructor(props) {
+        super(props);
+        this.outsideClick = this.outsideClick.bind(this);
     }
 
     outsideClick() {
         if (!this.insideClick) {
             this.props.hide();
         }
+    }
+
+    componentDidMount() {
+        window.addEventListener('mousedown', this.outsideClick);
+        window.addEventListener('wheel', prevent);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('mousedown', this.outsideClick);
+        window.removeEventListener('wheel', prevent);
     }
 
     setInsideClick(value) {
