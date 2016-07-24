@@ -2,8 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import assert from 'assert'
 
+import './index.less'
+
 import {hidePopup} from './actions'
-import {getKey} from './selectors'
+import {getKey, getX, getY} from './selectors'
 import popups from '../popups'
 
 const prevent = event => {
@@ -40,7 +42,7 @@ class Popup extends React.Component {
     render() {
         const Component = popups[this.props.popupKey];
         assert.ok(Component, `Cannot find component for ${this.props.popupKey}.`);
-        return <div
+        return <div id="popup" style={this.props.position}
             onMouseDown={this.setInsideClick.bind(this, true)}
             onMouseUp={this.setInsideClick.bind(this, false)}>
                 <Component/>
@@ -50,7 +52,11 @@ class Popup extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    popupKey: getKey(state)
+    popupKey: getKey(state),
+    position: {
+        left: getX(state),
+        top: getY(state)
+    }
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -9,7 +9,7 @@ const initial = Map({
 export default (state = initial, action) => {
     switch(action.type) {
         case SHOW_POPUP:
-            return state.set('key', action.payload);
+            return state.merge(action.payload);
         case HIDE_POPUP:
             return state.set('key', null);
         default:
