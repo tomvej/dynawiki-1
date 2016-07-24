@@ -9,7 +9,7 @@ const showPopupInternal = (key, x, y) => ({
     payload: {key, x, y}
 });
 
-export const showPopup = (key, mouseEvent) => showPopupInternal(key, mouseEvent.screenX, mouseEvent.screenY);
+export const showPopup = (key, mouseEvent) => showPopupInternal(key, mouseEvent.clientX, mouseEvent.clientY);
 
 export const hidePopup = () => ({
     type: HIDE_POPUP
