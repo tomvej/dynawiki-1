@@ -2,8 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import assert from 'assert'
 
-import './index.less'
-
 import {hidePopup} from './actions'
 import {getKey, getX, getY} from './selectors'
 import popups from '../popups'
