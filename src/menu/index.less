@@ -1,0 +1,32 @@
+.popup-menu {
+    background-color: white;
+    border: 1px solid black;
+
+    section {
+        &:not(:last-child) {
+            border-bottom: 1px solid black;
+        }
+    }
+
+    header {
+        padding: 5px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    li {
+        padding: 5px;
+        cursor: pointer;
+
+        &:hover {
+            color: white;
+            background-color: navy;
+        }
+    }
+}
