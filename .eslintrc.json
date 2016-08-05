@@ -1,4 +1,12 @@
 {
+    "extends": [
+        "eslint:recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings"
+    ],
+    "plugins": [
+        "react"
+    ],
     "parserOptions": {
         "ecmaVersion": 6,
         "sourceType": "module",
@@ -13,6 +21,10 @@
         "node": true
     },
     "rules": {
-
+        /* necessary for React */
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "no-unused-vars": ["error", {"args": "none"}], // allow unused arguments (pattern functions)
+        "no-console": ["warn", {"allow": ["warn", "error"]}] // allow warn and error in console
     }
 }
