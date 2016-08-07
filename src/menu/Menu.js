@@ -35,39 +35,40 @@ class Menu extends React.Component {
     }
 
     moveSelectionUp() {
-        if (this.state.selectedSection !== null) {
-            if (this.state.selectedItem > 0) {
+        const {selectedSection, selectedItem} = this.state;
+        if (selectedSection !== null) {
+            if (selectedItem > 0) {
                 this.setState({
-                    selectedItem: this.state.selectedItem - 1
+                    selectedItem: selectedItem - 1
                 });
             } else {
-                const section = (this.state.selectedSection > 0) ? (this.state.selectedSection - 1) : Children.count(this.props.children) - 1;
+                const section = (selectedSection > 0) ? (selectedSection - 1) : this.sections().length - 1;
                 this.setState({
                     selectedSection: section,
-                    selectedItem: Children.count(this.items(section)) - 1
+                    selectedItem: this.items(section).length - 1
                 });
             }
         } else {
-            const sectionsSize = Children.count(this.props.children);
-            const items = this.items(sectionsSize - 1);
+            const sectionsSize = this.sections().length;
             this.setState({
                 selectedSection: sectionsSize - 1,
-                selectedItem: Children.count(items) - 1
+                selectedItem: this.items(sectionsSize - 1).lengt - 1
             });
         }
     }
 
     moveSelectionDown() {
-        if (this.state.selectedSection !== null) {
-            const itemsSize = Children.count(this.items(this.state.selectedSection));
-            if (itemsSize > this.state.selectedItem + 1) {
+        const {selectedSection, selectedItem} = this.state;
+        if (selectedSection !== null) {
+            const itemsSize = this.items(selectedSection).length;
+            if (itemsSize > selectedItem + 1) {
                 this.setState({
-                    selectedItem: this.state.selectedItem + 1
+                    selectedItem: selectedItem + 1
                 });
             } else {
-                const sectionsSize = Children.count(this.props.children);
+                const sectionsSize = this.sections().length;
                 this.setState({
-                    selectedSection: (sectionsSize > this.state.selectedSection + 1) ? (this.state.selectedSection + 1) : 0,
+                    selectedSection: (sectionsSize > selectedSection + 1) ? (selectedSection + 1) : 0,
                     selectedItem: 0
                 });
             }
@@ -79,8 +80,12 @@ class Menu extends React.Component {
         }
     }
 
+    sections() {
+        return Children.toArray(this.props.children);
+    }
+
     items(section) {
-        return Children.toArray(this.props.children)[section].props.children;
+        return Children.toArray(this.sections()[section].props.children);
     }
 
     render() {
