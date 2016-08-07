@@ -36,7 +36,17 @@ class Menu extends React.Component {
 
     moveSelectionUp() {
         if (this.state.selectedSection !== null) {
-            // select previous
+            if (this.state.selectedItem > 0) {
+                this.setState({
+                    selectedItem: this.state.selectedItem - 1
+                });
+            } else {
+                const section = (this.state.selectedSection > 0) ? (this.state.selectedSection - 1) : Children.count(this.props.children) - 1;
+                this.setState({
+                    selectedSection: section,
+                    selectedItem: Children.count(this.items(section)) - 1
+                });
+            }
         } else {
             const sectionsSize = Children.count(this.props.children);
             const items = this.items(sectionsSize - 1);
