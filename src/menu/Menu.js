@@ -9,6 +9,7 @@ class Menu extends React.Component {
             selectedItem: null
         };
         this.handleKeyPress = this.handleKeyPress.bind(this);
+        this.selectSection = this.selectSection.bind(this);
     }
 
     componentDidMount() {
@@ -88,13 +89,22 @@ class Menu extends React.Component {
         return Children.toArray(this.sections()[section].props.children);
     }
 
+    selectSection(section) {
+        const index = this.sections().findIndex(({props: {id}}) => id === section);
+        this.setState({
+            selectedSection: index,
+            selectedItem: 0
+        });
+    }
+
     render() {
         const selectedSection = Children.toArray(this.props.children)[this.state.selectedSection];
         const selectedItem = selectedSection && Children.toArray(selectedSection.props.children)[this.state.selectedItem];
         return <div className="popup-menu">
             {Children.map(this.props.children, child => React.cloneElement(child, {
                 selectedSection: selectedSection && selectedSection.props.id,
-                selectedItem: selectedItem && selectedItem.props.id
+                selectedItem: selectedItem && selectedItem.props.id,
+                selectSection: this.selectSection
             }))}
         </div>;
     }
