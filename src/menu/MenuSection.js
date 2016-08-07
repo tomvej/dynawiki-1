@@ -5,6 +5,7 @@ const MenuSection = ({id, collapse, label, children, selectedSection, selectedIt
         {!!label && <header onMouseOver={() => selectSection(id)}>{label}</header>}
         <ul>
             {Children.map(children, child => React.cloneElement(child, {
+                key: child.props.id,
                 selectedItem,
                 selectItem: (itemId) => selectItem(id, itemId)
             }))}

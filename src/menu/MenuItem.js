@@ -5,8 +5,8 @@ const MenuItem = ({id, selectedItem, selectItem, onClick, children}) => (
 );
 
 MenuItem.propTypes = {
-    onClick: PropTypes.func,
     id: PropTypes.string.isRequired,
+    onClick: PropTypes.func,
     selectedItem: PropTypes.string,
     selectItem: PropTypes.func
 };

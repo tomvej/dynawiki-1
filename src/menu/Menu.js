@@ -117,6 +117,7 @@ class Menu extends React.Component {
         const selectedItem = selectedSection && Children.toArray(selectedSection.props.children)[this.state.selectedItem];
         return <div className="popup-menu">
             {Children.map(this.props.children, child => React.cloneElement(child, {
+                key: child.props.id,
                 selectedSection: selectedSection && selectedSection.props.id,
                 selectedItem: selectedItem && selectedItem.props.id,
                 selectSection: this.selectSection,
