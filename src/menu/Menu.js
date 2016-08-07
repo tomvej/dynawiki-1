@@ -30,9 +30,14 @@ class Menu extends React.Component {
                 this.moveSelectionDown();
                 break;
             case 'Enter':
+                this.clickOnSelection();
                 break;
-            case 'Escape':
-                break;
+        }
+    }
+
+    clickOnSelection() {
+        if (this.state.selectedSection !== null) {
+            this.items(this.state.selectedSection)[this.state.selectedItem].props.onClick();
         }
     }
 
