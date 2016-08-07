@@ -6,12 +6,21 @@
         &:not(:last-child) {
             border-bottom: 1px solid black;
         }
-    }
 
-    header {
-        padding: 5px;
-        font-weight: bold;
-        text-transform: uppercase;
+        header {
+            padding: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        &[aria-selected="false"].collapse {
+            header::after {
+                content: '...';
+            }
+            ul {
+                display: none;
+            }
+        }
     }
 
     ul {

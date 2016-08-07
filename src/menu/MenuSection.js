@@ -1,7 +1,7 @@
 import React, {PropTypes, Children} from 'react'
 
-const MenuSection = ({id, label, children, selectedSection, selectedItem, selectSection, selectItem}) => (
-    <section aria-selected={id === selectedSection}>
+const MenuSection = ({id, collapse, label, children, selectedSection, selectedItem, selectSection, selectItem}) => (
+    <section aria-selected={id === selectedSection} className={collapse && label ? 'collapse' : ''}>
         {!!label && <header onMouseOver={() => selectSection(id)}>{label}</header>}
         <ul>
             {Children.map(children, child => React.cloneElement(child, {
@@ -13,8 +13,9 @@ const MenuSection = ({id, label, children, selectedSection, selectedItem, select
 );
 
 MenuSection.propTypes = {
-    label: PropTypes.string,
     id: PropTypes.string.isRequired,
+    label: PropTypes.string,
+    collapse: PropTypes.bool,
     selectedSection: PropTypes.string,
     selectedItem: PropTypes.string,
     selectSection: PropTypes.func,
