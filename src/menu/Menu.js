@@ -38,7 +38,12 @@ class Menu extends React.Component {
         if (this.state.selectedSection !== null) {
             // select previous
         } else {
-            //select last
+            const sectionsSize = Children.count(this.props.children);
+            const items = Children.toArray(this.props.children)[sectionsSize - 1].props.children
+            this.setState({
+                selectedSection: sectionsSize - 1,
+                selectedItem: Children.count(items) - 1
+            });
         }
     }
 
@@ -46,7 +51,10 @@ class Menu extends React.Component {
         if (this.state.selectedSection !== null) {
             // select next
         } else {
-            // select first
+            this.setState({
+                selectedSection: 0,
+                selectedItem: 0
+            });
         }
     }
 
