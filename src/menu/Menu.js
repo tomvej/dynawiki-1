@@ -39,7 +39,7 @@ class Menu extends React.Component {
             // select previous
         } else {
             const sectionsSize = Children.count(this.props.children);
-            const items = Children.toArray(this.props.children)[sectionsSize - 1].props.children
+            const items = this.items(sectionsSize - 1);
             this.setState({
                 selectedSection: sectionsSize - 1,
                 selectedItem: Children.count(items) - 1
@@ -49,13 +49,28 @@ class Menu extends React.Component {
 
     moveSelectionDown() {
         if (this.state.selectedSection !== null) {
-            // select next
+            const itemsSize = Children.count(this.items(this.state.selectedSection));
+            if (itemsSize > this.state.selectedItem + 1) {
+                this.setState({
+                    selectedItem: this.state.selectedItem + 1
+                });
+            } else {
+                const sectionsSize = Children.count(this.props.children);
+                this.setState({
+                    selectedSection: (sectionsSize > this.state.selectedSection + 1) ? (this.state.selectedSection + 1) : 0,
+                    selectedItem: 0
+                });
+            }
         } else {
             this.setState({
                 selectedSection: 0,
                 selectedItem: 0
             });
         }
+    }
+
+    items(section) {
+        return Children.toArray(this.props.children)[section].props.children;
     }
 
     render() {
