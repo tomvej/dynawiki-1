@@ -35,7 +35,7 @@ class Menu extends React.Component {
     }
 
     moveSelectionUp() {
-        if (this.state.selectedSection) {
+        if (this.state.selectedSection !== null) {
             // select previous
         } else {
             //select last
@@ -43,7 +43,7 @@ class Menu extends React.Component {
     }
 
     moveSelectionDown() {
-        if (this.state.selectedSection) {
+        if (this.state.selectedSection !== null) {
             // select next
         } else {
             // select first
@@ -51,8 +51,13 @@ class Menu extends React.Component {
     }
 
     render() {
+        const selectedSection = Children.toArray(this.props.children)[this.state.selectedSection];
+        const selectedItem = selectedSection && Children.toArray(selectedSection.props.children)[this.state.selectedItem];
         return <div className="popup-menu">
-            {this.props.children}
+            {Children.map(this.props.children, child => React.cloneElement(child, {
+                selectedSection: selectedSection && selectedSection.props.id,
+                selectedItem: selectedItem && selectedItem.props.id
+            }))}
         </div>;
     }
 }
