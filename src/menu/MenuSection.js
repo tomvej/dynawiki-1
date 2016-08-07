@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 
 const MenuSection = ({label, children}) => (<section>
     {!!label && <header>{label}</header>}
@@ -6,5 +6,10 @@ const MenuSection = ({label, children}) => (<section>
         {children}
     </ul>
 </section>);
+
+MenuSection.propTypes = {
+    label: PropTypes.string,
+    id: PropTypes.string.isRequired
+};
 
 export default MenuSection;
