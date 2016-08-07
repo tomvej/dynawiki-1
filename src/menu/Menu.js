@@ -59,7 +59,7 @@ class Menu extends React.Component {
             const sectionsSize = this.sections().length;
             this.setState({
                 selectedSection: sectionsSize - 1,
-                selectedItem: this.items(sectionsSize - 1).lengt - 1
+                selectedItem: this.items(sectionsSize - 1).length - 1
             });
         }
     }
