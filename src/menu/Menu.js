@@ -10,6 +10,7 @@ class Menu extends React.Component {
         };
         this.handleKeyPress = this.handleKeyPress.bind(this);
         this.selectSection = this.selectSection.bind(this);
+        this.selectItem = this.selectItem.bind(this);
     }
 
     componentDidMount() {
@@ -97,6 +98,15 @@ class Menu extends React.Component {
         });
     }
 
+    selectItem(section, item) {
+        const sectionIndex = this.sections().findIndex(({props: {id}}) => id === section);
+        const itemIndex = this.items(sectionIndex).findIndex(({props: {id}}) => id === item);
+        this.setState({
+            selectedSection: sectionIndex,
+            selectedItem: itemIndex
+        });
+    }
+
     render() {
         const selectedSection = Children.toArray(this.props.children)[this.state.selectedSection];
         const selectedItem = selectedSection && Children.toArray(selectedSection.props.children)[this.state.selectedItem];
@@ -104,7 +114,8 @@ class Menu extends React.Component {
             {Children.map(this.props.children, child => React.cloneElement(child, {
                 selectedSection: selectedSection && selectedSection.props.id,
                 selectedItem: selectedItem && selectedItem.props.id,
-                selectSection: this.selectSection
+                selectSection: this.selectSection,
+                selectItem: this.selectItem
             }))}
         </div>;
     }
