@@ -40,8 +40,12 @@ class Popup extends React.Component {
     render() {
         const Component = popups[this.props.popupKey];
         assert.ok(Component, `Cannot find component for ${this.props.popupKey}.`);
+        const position = {
+            left: this.props.left,
+            right: this.props.right
+        }
         return (
-            <div id="popup" style={this.props.position}
+            <div id="popup" style={right}
                 onMouseDown={this.setInsideClick.bind(this, true)}
                 onMouseUp={this.setInsideClick.bind(this, false)}
             >
@@ -54,10 +58,8 @@ class Popup extends React.Component {
 
 const mapStateToProps = (state) => ({
     popupKey: getKey(state),
-    position: {
-        left: getX(state),
-        top: getY(state),
-    },
+    left: getX(state),
+    top: getY(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
