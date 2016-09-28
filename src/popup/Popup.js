@@ -15,12 +15,8 @@ class Popup extends React.Component {
     constructor(props) {
         super(props);
         this.outsideClick = this.outsideClick.bind(this);
-    }
-
-    outsideClick() {
-        if (!this.insideClick) {
-            this.props.hide();
-        }
+        this.mouseDown = this.setInsideClick.bind(this, true);
+        this.mouseUp = this.setInsideClick.bind(this, false);
     }
 
     componentDidMount() {
@@ -37,6 +33,12 @@ class Popup extends React.Component {
         this.insideClick = value;
     }
 
+    outsideClick() {
+        if (!this.insideClick) {
+            this.props.hide();
+        }
+    }
+
     render() {
         const Component = popups[this.props.popupKey];
         assert.ok(Component, `Cannot find component for ${this.props.popupKey}.`);
@@ -44,14 +46,9 @@ class Popup extends React.Component {
             left: this.props.left,
             top: this.props.top,
         };
-        return (
-            <div id="popup" style={position}
-                onMouseDown={this.setInsideClick.bind(this, true)}
-                onMouseUp={this.setInsideClick.bind(this, false)}
-            >
-                <Component />
-            </div>
-        );
+        return (<div id="popup" style={position} onMouseDown={this.mouseDown} onMouseUp={this.mouseUp}>
+            <Component />
+        </div>);
     }
 
 }

@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {ChildTypes} from '../util';
 
 const MenuItem = ({id, selectedItem, selectItem, onClick, children}) => (
-    <li aria-selected={id === selectedItem} onClick={onClick} onMouseOver={() => selectItem(id)}>{children}</li>
+    <li data-selected={id === selectedItem} onClick={onClick} onMouseOver={() => selectItem(id)}>{children}</li>
 );
 
 MenuItem.propTypes = {

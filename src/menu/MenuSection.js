@@ -2,7 +2,7 @@ import React, {PropTypes, Children} from 'react';
 import {ChildTypes} from '../util';
 
 const MenuSection = ({id, collapse, label, children, selectedSection, selectedItem, selectSection, selectItem}) => (
-    <section aria-selected={id === selectedSection} className={collapse && label ? 'collapse' : ''}>
+    <section data-selected={id === selectedSection} className={collapse && label ? 'collapse' : ''}>
         {!!label && <header onMouseOver={() => selectSection(id)}>{label}</header>}
         <ul>
             {Children.map(children, (child) => React.cloneElement(child, {

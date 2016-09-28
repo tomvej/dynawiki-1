@@ -13,7 +13,7 @@
             text-transform: uppercase;
         }
 
-        &[aria-selected="false"].collapse {
+        &[data-selected="false"].collapse {
             header::after {
                 content: '...';
             }
@@ -33,7 +33,7 @@
         padding: 5px;
         cursor: pointer;
 
-        &[aria-selected="true"] {
+        &[data-selected="true"] {
             color: white;
             background-color: navy;
         }

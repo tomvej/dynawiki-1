@@ -29,6 +29,15 @@
         "max-len": "off",
         "no-unused-vars": ["error", {"args": "none"}], // allow unused arguments (pattern functions)
         "import/prefer-default-export": "off",
+        /* capital-letter functions should only be used as constructors */
+        "new-cap": ["error", {
+            "newIsCap": true,
+            "newIsCapExceptions": [],
+            "capIsNew": false,
+            "capIsNewExceptions": ["Map", "Set", "List"]
+        }],
+        /* only links and buttons should have onClick */
+        "jsx-a11y/no-static-element-interactions": "off",
 
         "react/jsx-key": "warn"
     }
