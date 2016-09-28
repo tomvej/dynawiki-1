@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import assert from 'assert';
 
@@ -42,10 +42,10 @@ class Popup extends React.Component {
         assert.ok(Component, `Cannot find component for ${this.props.popupKey}.`);
         const position = {
             left: this.props.left,
-            right: this.props.right
-        }
+            top: this.props.top,
+        };
         return (
-            <div id="popup" style={right}
+            <div id="popup" style={position}
                 onMouseDown={this.setInsideClick.bind(this, true)}
                 onMouseUp={this.setInsideClick.bind(this, false)}
             >
@@ -55,6 +55,13 @@ class Popup extends React.Component {
     }
 
 }
+
+Popup.propTypes = {
+    popupKey: PropTypes.string.isRequired,
+    left: PropTypes.number.isRequired,
+    top: PropTypes.number.isRequired,
+    hide: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => ({
     popupKey: getKey(state),

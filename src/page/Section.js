@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 
 import {getSection} from './selectors';
@@ -11,9 +11,20 @@ const Section = ({header, children}) => (
     </section>
 );
 
+Section.propTypes = {
+    header: PropTypes.string.isRequired,
+    children: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
+
 const mapStateToProps = (state, {id}) => ({
     header: getSection(state, id).heading,
     children: getSection(state, id).children,
 });
 
-export default connect(mapStateToProps)(Section);
+const Connected = connect(mapStateToProps)(Section);
+
+Connected.propTypes = {
+    id: PropTypes.number.isRequired,
+};
+
+export default Connected;

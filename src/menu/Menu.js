@@ -1,4 +1,5 @@
 import React, {Children} from 'react';
+import {ChildPropTypes} from '../util';
 
 class Menu extends React.Component {
 
@@ -126,5 +127,9 @@ class Menu extends React.Component {
         </div>);
     }
 }
+
+Menu.propTypes = {
+    children: ChildPropTypes.elements.isRequired,
+};
 
 export default Menu;

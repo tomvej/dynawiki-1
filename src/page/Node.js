@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 
 import {nodeType} from './constants';
@@ -16,9 +16,19 @@ const Node = ({id, type}) => {
     return <Component id={id} />;
 };
 
+Node.propTypes = {
+    id: PropTypes.number.isRequired,
+    type: PropTypes.oneOf(Object.values(nodeType)),
+};
+
 const mapStateToProps = (state, {id}) => ({
-    id,
     type: getType(state, id),
 });
 
-export default connect(mapStateToProps)(Node);
+const Connected = connect(mapStateToProps)(Node);
+
+Connected.propTypes = {
+    id: PropTypes.number.isRequired,
+};
+
+export default Connected;
