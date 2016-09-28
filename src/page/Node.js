@@ -3,16 +3,10 @@ import {connect} from 'react-redux';
 
 import {nodeType} from './constants';
 import {getType} from './selectors';
-import Section from './Section';
-import Paragraph from './Paragraph';
-
-const nodeMap = {
-    [nodeType.SECTION]: Section,
-    [nodeType.PARAGRAPH]: Paragraph,
-};
+import componentMap from './components';
 
 const Node = ({id, type}) => {
-    const Component = nodeMap[type];
+    const Component = componentMap[type];
     return <Component id={id} />;
 };
 

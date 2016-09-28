@@ -1,10 +1,11 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 
-import {ImmutableTypes} from '../util';
+import {ImmutableTypes} from '../../util';
 
-import {getSection} from './selectors';
-import Node from './Node';
+import {nodeType} from '../constants';
+import {getNode} from '../selectors';
+import Node from '../Node';
 
 const Section = ({header, children}) => (
     <section>
@@ -19,8 +20,8 @@ Section.propTypes = {
 };
 
 const mapStateToProps = (state, {id}) => ({
-    header: getSection(state, id).heading,
-    children: getSection(state, id).children,
+    header: getNode(state, id, nodeType.SECTION).heading,
+    children: getNode(state, id, nodeType.SECTION).children,
 });
 
 const Connected = connect(mapStateToProps)(Section);

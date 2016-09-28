@@ -1,15 +1,21 @@
 import {NAME} from './constants';
-import Section from './selectors/Section';
-import Paragraph from './selectors/Paragraph';
+import modelMap from './model';
+import {assert} from '../util';
 
 const getModel = (state) => state.get(NAME);
 
-const getNode = (state, id) => (getModel(state).get(String(id)));
+const getNodeInternal = (state, id) => (getModel(state).get(String(id)));
 
 export const getTopId = (state) => 0;
 
-export const getType = (state, id) => getNode(state, id).get('type');
+export const getType = (state, id) => getNodeInternal(state, id).get('type');
 
-export const getSection = (state, id) => new Section(getNode(state, id));
-
-export const getParagraph = (state, id) => new Paragraph(getNode(state, id));
+export const getNode = (state, id, nodeType) => {
+    const type = getType(state, id);
+    assert.equal(type, nodeType, 'Wrong node type:');
+    const Model = modelMap[type];
+    if (!Model) {
+        throw new Error(`Cannot find model for ${type}.`);
+    }
+    return new Model(getNodeInternal(state, id));
+};

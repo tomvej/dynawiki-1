@@ -1,5 +1,4 @@
 import Node from './Node';
-import {nodeType} from '../constants';
 
 class Section extends Node {
     get heading() {
@@ -10,6 +9,5 @@ class Section extends Node {
         return this.node.get('children');
     }
 }
-Section.prototype.type = nodeType.SECTION;
 
 export default Section;

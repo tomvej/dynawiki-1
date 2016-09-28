@@ -1,7 +1,8 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 
-import {getParagraph} from './selectors';
+import {getNode} from '../selectors';
+import {nodeType} from '../constants';
 
 const Paragraph = ({text}) => (<p>{text}</p>);
 
@@ -10,7 +11,7 @@ Paragraph.propTypes = {
 };
 
 const mapStateToProps = (state, {id}) => ({
-    text: getParagraph(state, id).text,
+    text: getNode(state, id, nodeType.PARAGRAPH).text,
 });
 
 const Connected = connect(mapStateToProps)(Paragraph);
