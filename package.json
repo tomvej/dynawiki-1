@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Dynamic personal wiki",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server -d --inline --hot"
+    "start": "./node_modules/.bin/webpack-dev-server -d --inline --hot",
+    "lint": "./node_modules/.bin/eslint src"
   },
   "repository": {
     "type": "git",
