@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "description": "Dynamic personal wiki",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server -d --inline --hot",
-    "lint": "./node_modules/.bin/eslint src"
+    "start": "sh -c 'mongodb-rest & npm run devserver & wait'",
+    "devserver": "webpack-dev-server -d --inline --hot",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
     "eslint-plugin-react": "^6.0.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
+    "mongodb-rest": "^0.10.14",
     "npm-check-updates": "^2.8.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
