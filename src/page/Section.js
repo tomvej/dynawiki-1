@@ -1,6 +1,8 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 
+import {ImmutableTypes} from '../util';
+
 import {getSection} from './selectors';
 import Node from './Node';
 
@@ -13,7 +15,7 @@ const Section = ({header, children}) => (
 
 Section.propTypes = {
     header: PropTypes.string.isRequired,
-    children: PropTypes.arrayOf(PropTypes.number).isRequired,
+    children: ImmutableTypes.list.isRequired,
 };
 
 const mapStateToProps = (state, {id}) => ({

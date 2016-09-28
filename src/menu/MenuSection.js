@@ -1,5 +1,5 @@
 import React, {PropTypes, Children} from 'react';
-import {ChildPropTypes} from '../util';
+import {ChildTypes} from '../util';
 
 const MenuSection = ({id, collapse, label, children, selectedSection, selectedItem, selectSection, selectItem}) => (
     <section aria-selected={id === selectedSection} className={collapse && label ? 'collapse' : ''}>
@@ -22,7 +22,7 @@ MenuSection.propTypes = {
     selectedItem: PropTypes.string,
     selectSection: PropTypes.func,
     selectItem: PropTypes.func,
-    children: ChildPropTypes.elements,
+    children: ChildTypes.elements,
 };
 
 export default MenuSection;

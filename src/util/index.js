@@ -1,7 +1,9 @@
 import assert from './assert';
-import ChildPropTypes from './ChildPropTypes';
+import ChildTypes from './ChildTypes';
+import ImmutableTypes from './ImmutableTypes';
 
 export {
     assert,
-    ChildPropTypes,
+    ChildTypes,
+    ImmutableTypes,
 };
