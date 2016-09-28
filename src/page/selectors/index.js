@@ -2,7 +2,7 @@ import {NAME} from '../constants';
 import Section from './Section';
 import Paragraph from './Paragraph';
 
-const getModel = (state) => state[NAME];
+const getModel = (state) => state.get(NAME);
 
 const getNode = (state, id) => (getModel(state).get(String(id)));
 

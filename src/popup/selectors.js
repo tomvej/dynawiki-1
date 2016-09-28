@@ -1,6 +1,6 @@
 import {NAME} from './constants';
 
-const getModel = (state) => state[NAME];
+const getModel = (state) => state.get(NAME);
 
 export const getKey = (state) => getModel(state).get('key');
 
