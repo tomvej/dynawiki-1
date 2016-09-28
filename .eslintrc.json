@@ -1,9 +1,5 @@
 {
-    "extends": [
-        "eslint:recommended",
-        "plugin:import/errors",
-        "plugin:import/warnings"
-    ],
+    "extends": "airbnb",
     "plugins": [
         "react"
     ],
@@ -22,20 +18,20 @@
     },
     "rules": {
         /* necessary for React */
-        "react/jsx-uses-react": "error",
-        "react/jsx-uses-vars": "error",
+        //"react/jsx-uses-react": "error",
+        //"react/jsx-uses-vars": "error",
         /* less strict */
-        "no-unused-vars": ["error", {"args": "none"}], // allow unused arguments (pattern functions)
-        "no-console": ["warn", {"allow": ["warn", "error"]}], // allow warn and error in console
+        //"no-unused-vars": ["error", {"args": "none"}], // allow unused arguments (pattern functions)
+        //"no-console": ["warn", {"allow": ["warn", "error"]}], // allow warn and error in console
         /* best-practices */
-        "curly": "error",
-        "no-alert": "error",
+        //"curly": "error",
+        //"no-alert": "error",
         /* styling */
-        "no-trailing-spaces": "error",
-        "eol-last": "error",
-        "jsx-quotes": ["warn", "prefer-double"],
+        //"no-trailing-spaces": "error",
+        //"eol-last": "error",
+        //"jsx-quotes": ["warn", "prefer-double"],
         /* ES6 */
-        "no-var" : "error",
-        "arrow-body-style": ["warn", "as-needed"]
+        //"no-var" : "error",
+        //"arrow-body-style": ["warn", "as-needed"]
     }
 }
