@@ -28,6 +28,8 @@
         "arrow-parens": ["error", "always"],
         "max-len": "off",
         "no-unused-vars": ["error", {"args": "none"}], // allow unused arguments (pattern functions)
+        "import/prefer-default-export": "off",
+
         "react/jsx-key": "warn"
     }
 }

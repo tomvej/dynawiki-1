@@ -87,9 +87,11 @@ Object.keys(nodes).forEach((id) => {
 
 Object.keys(nodes).forEach((id) => {
     const children = nodes[id].children;
-    children && children.forEach((child) => {
-        nodes[child].parent = id;
-    });
+    if (children) {
+        children.forEach((child) => {
+            nodes[child].parent = id;
+        });
+    }
 });
 
 export default fromJS(nodes);

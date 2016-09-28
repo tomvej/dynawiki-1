@@ -33,6 +33,7 @@ class Menu extends React.Component {
             case 'Enter':
                 this.clickOnSelection();
                 break;
+            default: // do nothing
         }
     }
 
