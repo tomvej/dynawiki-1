@@ -1,4 +1,4 @@
-import {NAME} from './constants'
+import {NAME} from './constants';
 
 const getModel = (state) => state[NAME];
 

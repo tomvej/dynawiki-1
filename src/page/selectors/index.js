@@ -1,6 +1,6 @@
-import {NAME} from '../constants'
-import Section from './Section'
-import Paragraph from './Paragraph'
+import {NAME} from '../constants';
+import Section from './Section';
+import Paragraph from './Paragraph';
 
 const getModel = (state) => state[NAME];
 

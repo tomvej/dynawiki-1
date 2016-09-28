@@ -1,4 +1,4 @@
 /* eslint-disable require-yield */
-export default function*() {
+export default function* () {
     console.log('Sagas connected');
 }

@@ -1,12 +1,12 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import assert from 'assert'
+import React from 'react';
+import {connect} from 'react-redux';
+import assert from 'assert';
 
-import {hidePopup} from './actions'
-import {getKey, getX, getY} from './selectors'
-import popups from '../popups'
+import {hidePopup} from './actions';
+import {getKey, getX, getY} from './selectors';
+import popups from '../popups';
 
-const prevent = event => {
+const prevent = (event) => {
     event.preventDefault();
 };
 
@@ -40,11 +40,14 @@ class Popup extends React.Component {
     render() {
         const Component = popups[this.props.popupKey];
         assert.ok(Component, `Cannot find component for ${this.props.popupKey}.`);
-        return <div id="popup" style={this.props.position}
-            onMouseDown={this.setInsideClick.bind(this, true)}
-            onMouseUp={this.setInsideClick.bind(this, false)}>
-                <Component/>
-        </div>;
+        return (
+            <div id="popup" style={this.props.position}
+                onMouseDown={this.setInsideClick.bind(this, true)}
+                onMouseUp={this.setInsideClick.bind(this, false)}
+            >
+                <Component />
+            </div>
+        );
     }
 
 }
@@ -53,12 +56,12 @@ const mapStateToProps = (state) => ({
     popupKey: getKey(state),
     position: {
         left: getX(state),
-        top: getY(state)
-    }
+        top: getY(state),
+    },
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    hide: () => dispatch(hidePopup())
+    hide: () => dispatch(hidePopup()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Popup);

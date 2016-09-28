@@ -1,13 +1,13 @@
-import {Map} from 'immutable'
+import {Map} from 'immutable';
 
-import {SHOW_POPUP, HIDE_POPUP} from './actions'
+import {SHOW_POPUP, HIDE_POPUP} from './actions';
 
 const initial = Map({
-    key: null
+    key: null,
 });
 
 export default (state = initial, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case SHOW_POPUP:
             return state.merge(action.payload);
         case HIDE_POPUP:

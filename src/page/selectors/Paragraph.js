@@ -1,5 +1,5 @@
-import Node from './Node'
-import {nodeType} from '../constants'
+import Node from './Node';
+import {nodeType} from '../constants';
 
 class Paragraph extends Node {
     constructor(node) {

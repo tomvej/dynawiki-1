@@ -1,7 +1,7 @@
-import assert from 'assert'
+import assert from 'assert';
 
-const equal = (actual, expected, message = '') => assert.strictEqual(expected, actual,`${message} ${expected} !== ${actual}`);
+const equal = (actual, expected, message = '') => assert.strictEqual(expected, actual, `${message} ${expected} !== ${actual}`);
 
 export default {
-    equal
+    equal,
 };
