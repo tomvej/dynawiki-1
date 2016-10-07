@@ -15,7 +15,10 @@ var nodeModules = fs.readdirSync('../node_modules')
     .reduce((object, dir) => Object.assign(object, {[dir]: 'commonjs ' + dir}));
 
 var compiler = webpack({
-    entry: target,
+    entry: [
+        'babel-polyfill',
+        target
+    ],
     output: {
         path: '/',
         filename: 'script.js'
@@ -27,7 +30,7 @@ var compiler = webpack({
                 loader: 'babel-loader',
                 exclude: '/node_modules/',
                 query: {
-                    presets: ['es2015']
+                    presets: ['es2015', 'react']
                 }
             }
         ]
@@ -42,7 +45,7 @@ compiler.run(function (error, stats) {
     if (error) {
         console.error(error);
     } else if (stats.compilation.errors.length) {
-        console.error(sntats.compilation.errors);
+        console.error(stats.compilation.errors);
     } else {
         if (stats.compilation.warnings.length) {
             console.warn(stats.compilation.warnings);
