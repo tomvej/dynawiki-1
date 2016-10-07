@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch';
+
 import FetchError from './FetchError';
 import {CREATE, GET_ALL, GET_ONE, EDIT, DELETE} from './methods';
 
@@ -42,7 +44,7 @@ methodDefinitions[CREATE] = (collection) => (data) =>
         }
     });
 
-methodDefinitions[GET_ALL] = (collection) => (query) => callFetchAndProcessReply(`${DB_URL}/${collection}?query=${JSON.stringify(query)}`, 'GET');
+methodDefinitions[GET_ALL] = (collection) => (query = {}) => callFetchAndProcessReply(`${DB_URL}/${collection}?query=${JSON.stringify(query)}`, 'GET');
 
 methodDefinitions[GET_ONE] = (collection) => (id) => callFetchAndProcessReply(getUrl(collection, id), 'GET');
 
