@@ -1,13 +1,18 @@
 var webpack = require('webpack');
 var MemoryFS = require('memory-fs');
-var vm = require('vm');
 var path = require('path');
+var fs = require('fs');
 
 var target = process.argv[2]; // first argument
 if (!path.isAbsolute(target)) {
     /* when giving file name without path, webpack would think it a library */
     target = './' + target;
 }
+
+/* do not bundle libraries -- use them via require */
+var nodeModules = fs.readdirSync('../node_modules')
+    .filter((dir) => !dir.includes('.bin'))
+    .reduce((object, dir) => Object.assign(object, {[dir]: 'commonjs ' + dir}));
 
 var compiler = webpack({
     entry: target,
@@ -27,22 +32,23 @@ var compiler = webpack({
             }
         ]
     },
-    target: 'node'
+    target: 'node',
+    externals: nodeModules
 });
 
-var fs = new MemoryFS();
-compiler.outputFileSystem = fs;
+var memFS = new MemoryFS();
+compiler.outputFileSystem = memFS;
 compiler.run(function (error, stats) {
     if (error) {
         console.error(error);
     } else if (stats.compilation.errors.length) {
-        console.error(stats.compilation.errors);
+        console.error(sntats.compilation.errors);
     } else {
         if (stats.compilation.warnings.length) {
             console.warn(stats.compilation.warnings);
         }
-        var scriptSrc = fs.readFileSync('/script.js', 'utf-8');
-        var script = new vm.Script(scriptSrc);
-        script.runInThisContext();
+        var scriptSrc = memFS.readFileSync('/script.js', 'utf-8');
+        /* use eval instead of vm.runInThisContext so that require works */
+        eval(scriptSrc);
     }
 });
