@@ -27,7 +27,7 @@ export default (text) => text.split('\n').reduce(({result, buffer}, line) => {
         if (!buffer.length) {
             return newResult(result.concat([section]));
         } else {
-            return newResult(result.concat([section, paragraph(buffer)]));
+            return newResult(result.concat([paragraph(buffer), section]));
         }
     } else {
         return newResult(result, buffer.concat([line]));
