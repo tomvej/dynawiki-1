@@ -1,5 +1,5 @@
 import blockType from './blockType';
-import page from '../src/page';
+import page from '../../src/page';
 
 export default (blocks) => {
     const result = {};

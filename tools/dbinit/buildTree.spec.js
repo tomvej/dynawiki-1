@@ -1,6 +1,6 @@
 import buildTree from './buildTree';
 import blockType from './blockType';
-import page from '../src/page';
+import page from '../../src/page';
 
 describe('Build Tree', () => {
     const callBuildTree = (...params) => () => {
