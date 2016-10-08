@@ -29,7 +29,7 @@ export default (blocks) => {
                 currentSection = result[currentSection].parent;
                 currentLevel -= 1;
             }
-            pushNode(currentSection, page.nodeType.SECTION, text);
+            pushNode(page.nodeType.SECTION, text);
             currentSection = nextId - 1;
             currentLevel += 1;
         }
@@ -47,7 +47,6 @@ export default (blocks) => {
         text: blocks[0].text,
         children: [],
     };
-    pushNode(null, page.nodeType.SECTION, blocks[0].text);
     blocks.slice(1).forEach((block) => {
         switch (block.type) {
             case blockType.HEADING:
