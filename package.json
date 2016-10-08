@@ -5,7 +5,9 @@
   "scripts": {
     "start": "sh -c 'mongodb-rest & npm run devserver & wait'",
     "devserver": "webpack-dev-server -d --inline --hot",
-    "lint": "eslint src tools"
+    "lint": "eslint src tools",
+    "test": "mocha --compilers js:babel-register src/**/*.spec.js tools/**/*.spec.js --reporter spec",
+    "test:watch": "mocha --compilers js:babel-register src/**/*.spec.js tools/**/*.spec.js --repoter min --watch"
   },
   "repository": {
     "type": "git",
@@ -33,6 +35,8 @@
     "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
+    "babel-register": "^6.16.3",
+    "chai": "^3.5.0",
     "css-loader": "^0.25.0",
     "eslint": "^3.2.2",
     "eslint-config-airbnb": "^12.0.0",
@@ -42,6 +46,7 @@
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "memory-fs": "^0.3.0",
+    "mocha": "^3.1.0",
     "mongodb-rest": "^0.10.14",
     "npm-check-updates": "^2.8.0",
     "style-loader": "^0.13.1",
