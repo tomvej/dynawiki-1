@@ -14,7 +14,8 @@
     "env": {
         "es6": true,
         "browser": true,
-        "node": true
+        "node": true,
+        "mocha": true
     },
     "rules": {
         "indent": ["error", 4, {
@@ -39,6 +40,10 @@
         /* only links and buttons should have onClick */
         "jsx-a11y/no-static-element-interactions": "off",
         "no-else-return": "off",
+        "import/no-extraneous-dependencies": ["error", {
+            "devDependencies": ["**/*.spec.js"],
+            "optionalDependencies": false
+        }],
 
         "react/jsx-key": "warn"
     }

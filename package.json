@@ -6,8 +6,9 @@
     "start": "sh -c 'mongodb-rest & npm run devserver & wait'",
     "devserver": "webpack-dev-server -d --inline --hot",
     "lint": "eslint src tools",
-    "test": "mocha --compilers js:babel-register src/**/*.spec.js tools/**/*.spec.js --reporter spec",
-    "test:watch": "mocha --compilers js:babel-register src/**/*.spec.js tools/**/*.spec.js --repoter min --watch"
+    "test:base": "mocha --compilers js:babel-register tools/testSetup.js src/**/*.spec.js tools/**/*.spec.js",
+    "test": "npm run test:base -- --reporter spec",
+    "test:watch": "npm run test:base -- --reporter min --watch"
   },
   "repository": {
     "type": "git",
