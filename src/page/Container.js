@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
 
 import Node from './Node';
-import {getTopId} from './selectors';
+import {getRootId} from './selectors';
 
 const mapStateToProps = (state) => ({
-    id: getTopId(state),
+    id: getRootId(state),
 });
 
 export default connect(mapStateToProps)(Node);

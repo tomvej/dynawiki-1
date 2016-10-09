@@ -6,7 +6,7 @@ const getModel = (state) => state.get(NAME);
 
 const getNodeInternal = (state, id) => (getModel(state).get(String(id)));
 
-export const getTopId = (state) => 0;
+export const getRootId = (state) => 0;
 
 export const getType = (state, id) => getNodeInternal(state, id).get('type');
 

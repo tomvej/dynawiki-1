@@ -1,4 +1,7 @@
-/* eslint-disable require-yield */
+import {call} from 'redux-saga/effects';
+
+import page from './page';
+
 export default function* () {
-    console.log('Sagas connected');
+    yield call(page.saga);
 }
