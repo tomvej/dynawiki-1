@@ -4,16 +4,24 @@ const clean = () => server.pagenode[GET_ALL]().then(
     (response) => Promise.all(response.map(({_id}) => server.pagenode[DELETE](_id)))
 );
 
+/*
+ * Uses stack-less DFS to insert the whole tree structure into database.
+ * Node is only inserted when it is exited, i.e. when all its children have ids.
+ */
 export default (tree) => {
+    /* map from input (temporary) id to server id */
     const idMap = {};
-    const pushNode = (node) => server.pagenode[CREATE]({
+    /* inserts node and updates id map */
+    const insertNode = (node) => server.pagenode[CREATE]({
         type: node.type,
         text: node.text,
         children: node.children.map((child) => idMap[child]),
     }).then(({_id}) => {
         idMap[node.id] = _id;
     });
-    const exit = (id) => {
+
+    /* exits node and sees whether it can exit its parent */
+    const exit = (id) => insertNode(tree[id]).then(() => {
         const parentId = tree[id].parent;
         if (parentId || parentId === 0) {
             const parent = tree[parentId];
@@ -21,14 +29,14 @@ export default (tree) => {
             if (index < parent.children.length - 1) {
                 enter(parent.children[index + 1]);
             } else {
-                pushNode(parent).then(() => exit(parentId));
+                exit(parentId);
             }
         }
-    };
+    });
     const enter = (id) => {
         const node = tree[id];
         if (!node.children || !node.children.length) {
-            pushNode(node).then((newId) => exit(id));
+            exit(id);
         } else {
             enter(node.children[0]);
         }
