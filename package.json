@@ -3,12 +3,13 @@
   "version": "0.0.1",
   "description": "Dynamic personal wiki",
   "scripts": {
-    "start": "sh -c 'mongodb-rest & npm run devserver & wait'",
+    "start": "sh -c 'mongodb-rest & npm run devserver & npm run test:watch & wait'",
     "devserver": "webpack-dev-server -d --inline --hot",
     "lint": "eslint src tools",
     "test:base": "mocha --compilers js:babel-register tools/testSetup.js src/**/*.spec.js tools/**/*.spec.js",
     "test": "npm run test:base -- --reporter spec",
-    "test:watch": "npm run test:base -- --reporter min --watch"
+    "test:watch": "npm run test:base -- --reporter min --watch",
+    "db:clean": "cd tools && node run.js dbinit initial.md"
   },
   "repository": {
     "type": "git",
