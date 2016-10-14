@@ -9,8 +9,10 @@ if (!path.isAbsolute(target)) {
     target = './' + target;
 }
 
+var nodeModulesPath = path.join(path.dirname(target), '../node_modules');
+
 /* do not bundle libraries -- use them via require */
-var nodeModules = fs.readdirSync('../node_modules')
+var nodeModules = fs.readdirSync(nodeModulesPath)
     .filter((dir) => !dir.includes('.bin'))
     .reduce((object, dir) => Object.assign(object, {[dir]: 'commonjs ' + dir}));
 

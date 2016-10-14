@@ -9,7 +9,7 @@
     "test:base": "mocha --compilers js:babel-register tools/testSetup.js src/**/*.spec.js tools/**/*.spec.js",
     "test": "npm run test:base -- --reporter spec",
     "test:watch": "npm run test:base -- --reporter min --watch",
-    "db:clean": "cd tools && node run.js dbinit initial.md"
+    "db:clean": "node tools/run.js tools/dbinit tools/initial.md"
   },
   "repository": {
     "type": "git",
