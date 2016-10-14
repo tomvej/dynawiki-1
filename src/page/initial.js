@@ -5,6 +5,6 @@ export default fromJS({
     0: {
         type: nodeType.PARAGRAPH,
         text: 'Initial',
-        id: 0,
+        id: '0',
     },
 });

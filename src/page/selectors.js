@@ -4,7 +4,7 @@ import {assert} from '../util';
 
 const getModel = (state) => state.get(NAME);
 
-const getNodeInternal = (state, id) => (getModel(state).get('nodes').get(String(id)));
+const getNodeInternal = (state, id) => (getModel(state).get('nodes').get(id));
 
 export const getRootId = (state) => getModel(state).get('rootId');
 

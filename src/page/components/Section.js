@@ -27,7 +27,7 @@ const mapStateToProps = (state, {id}) => ({
 const Connected = connect(mapStateToProps)(Section);
 
 Connected.propTypes = {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
 };
 
 export default Connected;

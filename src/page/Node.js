@@ -11,7 +11,7 @@ const Node = ({id, type}) => {
 };
 
 Node.propTypes = {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     type: PropTypes.oneOf(Object.values(nodeType)),
 };
 
@@ -22,7 +22,7 @@ const mapStateToProps = (state, {id}) => ({
 const Connected = connect(mapStateToProps)(Node);
 
 Connected.propTypes = {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
 };
 
 export default Connected;
