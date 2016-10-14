@@ -1,8 +1,6 @@
 import {NAME, nodeType} from './constants';
-import initial from './initial';
 import Container from './Container';
 import saga from './saga';
-
-const reducer = (state = initial, action) => state;
+import reducer from './reducer';
 
 export default {NAME, nodeType, reducer, Container, saga};
