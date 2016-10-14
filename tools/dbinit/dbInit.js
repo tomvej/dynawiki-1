@@ -20,20 +20,21 @@ export default (tree) => {
         idMap[node.id] = _id;
     });
 
-    /* exits node and sees whether it can exit its parent */
-    const exit = (id) => insertNode(tree[id]).then(() => {
-        const parentId = tree[id].parent;
-        if (parentId || parentId === 0) {
-            const parent = tree[parentId];
-            const index = parent.children.indexOf(id);
-            if (index < parent.children.length - 1) {
-                enter(parent.children[index + 1]);
-            } else {
-                exit(parentId);
-            }
-        }
-    });
     const enter = (id) => {
+        /* exits node and sees whether it can exit its parent */
+        const exit = (nodeId) => insertNode(tree[nodeId]).then(() => {
+            const parentId = tree[nodeId].parent;
+            if (parentId || parentId === 0) {
+                const parent = tree[parentId];
+                const index = parent.children.indexOf(nodeId);
+                if (index < parent.children.length - 1) {
+                    enter(parent.children[index + 1]);
+                } else {
+                    exit(parentId);
+                }
+            }
+        });
+
         const node = tree[id];
         if (!node.children || !node.children.length) {
             exit(id);
