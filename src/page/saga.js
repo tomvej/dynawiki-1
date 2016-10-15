@@ -8,4 +8,4 @@ export default function* () {
     const ids = Set(nodes.map(({_id}) => _id));
     const childIds = Iterable(nodes).flatMap(({children}) => Iterable(children));
     yield put(setNodes(nodes, ids.subtract(childIds).first()));
-};
+}
