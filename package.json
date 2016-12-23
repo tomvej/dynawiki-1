@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tomvej/dynawiki.git"
+    "url": "git+https://github.com/tomvej/dynawiki-1.git"
   },
   "author": "tom.vejpustek@centrum.cz",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/tomvej/dynawiki/issues"
+    "url": "https://github.com/tomvej/dynawiki-1/issues"
   },
-  "homepage": "https://github.com/tomvej/dynawiki#readme",
+  "homepage": "https://github.com/tomvej/dynawiki-1#readme",
   "dependencies": {
     "immutable": "^3.8.1",
     "react": "^15.2.1",
